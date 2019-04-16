@@ -15,37 +15,37 @@ int main(void) {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
 	float a,b,c;
-	printf("Введите число a: ");
+	printf("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ a: ");
 	scanf("%f", &a);
 
 	int k;
-	printf("Введите команду: ");
+	printf("Р’РІРµРґРёС‚Рµ РєРѕРјР°РЅРґСѓ: ");
 	scanf("%i", &k);
 	if (k!=5) {
-		printf("Введите число b: ");
+		printf("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ b: ");
 		scanf("%f", &b);
 	}
 	switch(k) {
-		case 1:					//Сложение
+		case 1:					//РЎР»РѕР¶РµРЅРёРµ
 			printf("%.2f", a+b);
 			break;
-		case 2:					//Вычитание
+		case 2:					//Р’С‹С‡РёС‚Р°РЅРёРµ
 			printf("%.2f", a-b);
 			break;
-		case 3:					//Умножение
+		case 3:					//РЈРјРЅРѕР¶РµРЅРёРµ
 			printf("%.2f", a*b);
 			break;
-		case 4:					//Деление
+		case 4:					//Р”РµР»РµРЅРёРµ
 			printf("%.2f", a/b);
 			break;
-		case 5:					//Факториал
+		case 5:					//Р¤Р°РєС‚РѕСЂРёР°Р»
 			c=1;
 			for(int i = 1; i<=a; i++) {
 				c = c*i;
 			}
 			printf("%.2f", c);
 			break;
-		case 6:					//Возведение в степень
+		case 6:					//Р’РѕР·РІРµРґРµРЅРёРµ РІ СЃС‚РµРїРµРЅСЊ
 			c = a;
 			if (b!=0) {
 				for(int i=1; i<b; i++) {
@@ -57,7 +57,7 @@ int main(void) {
 				puts("1");
 			break;
 		default:
-			printf("Такой команды не существует");
+			printf("РўР°РєРѕР№ РєРѕРјР°РЅРґС‹ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚");
 			break;
 
 	}
