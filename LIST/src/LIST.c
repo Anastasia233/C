@@ -47,7 +47,7 @@ list_of_result* getLastResult(list_of_result* element){
 	return element;
 }
 												  // Функция добавления первого элемента
-void add_head_list(list** head, FILE* read_file){ //addHeadData, element_n = tmp
+void add_head_list(list** head, FILE* read_file){
 	list* element_n = (list*)malloc(sizeof(list));
 	fscanf(read_file, "%c %c", &element_n->operation, &element_n->calculator); // Читаем первые два символа из файла и записываем их в элемент списока
 	if(element_n->calculator == 'v'){
@@ -57,7 +57,7 @@ void add_head_list(list** head, FILE* read_file){ //addHeadData, element_n = tmp
 	}
 	element_n->A = malloc(element_n->size * sizeof(float));
 	element_n->B = malloc(element_n->size * sizeof(float));
-	for(int i = 0; i < element_n->size; i++){				// Считываем числа в первую переменную
+	for(int i = 0; i < element_n->size; i++){	  // Считываем числа в первую переменную
 		fscanf(read_file, "%f", &element_n->A[i]);
 	}
 
@@ -71,7 +71,7 @@ void add_head_list(list** head, FILE* read_file){ //addHeadData, element_n = tmp
 void Calculator_with_nmb(list* element, list_of_result* result);
 void Calculator_with_vct(list* element, list_of_result* result);
 
-void add_head_element_result(list* element, list_of_result** head_main){ //addHeadResult
+void add_head_element_result(list* element, list_of_result** head_main){
 	list_of_result* element_n = (list_of_result*)malloc(sizeof(list_of_result));// Выделяем память для временного елемента списка с результатами
 	if(element->calculator == 'v')
 		Calculator_with_vct(element, element_n);
@@ -94,11 +94,11 @@ void add_end_list(list* head_main, FILE* disaster){
 	element_n->A = malloc(element_n->size * sizeof(float));
 	element_n->B = malloc(element_n->size * sizeof(float));
 
-	for(int i = 0; i < element_n->size; i++){				 // Считываем числа в первую переменную
+	for(int i = 0; i < element_n->size; i++){
 		fscanf(disaster, "%f", &element_n->A[i]);
 	}
 
-	for(int i = 0; i < element_n->size; i++){		// ...затем во вторую
+	for(int i = 0; i < element_n->size; i++){
 		fscanf(disaster, "%f", &element_n->B[i]);
 	}
 	element_n->next = NULL;
@@ -106,7 +106,7 @@ void add_end_list(list* head_main, FILE* disaster){
 }
 
 // Функция добавления результата в другой список
-void add_result_list(list* element, list_of_result* head_main){ //addResult
+void add_result_list(list* element, list_of_result* head_main){
 	list_of_result* last = getLastResult(head_main);
 	list_of_result* element_n = (list_of_result*)malloc(sizeof(list_of_result)); // Создаём временный элемент
 	if(element->calculator == 'v')
@@ -213,12 +213,10 @@ int main(void) {
 	while(!feof(file)){
 		add_end_list(head_main, file);
 	}
-	list* start_list = head_main;  // Создаём start_list, чтобы не потерять начало списка
+	list* start_list = head_main;
 	list_of_result* start_result = NULL;
 	add_head_element_result(start_list, &start_result); // Записываем первый результат в другой список
-
 	start_list = start_list->next;
-	// Записываем оставшиеся результаты в другой список, если они имеются
 	while(start_list){
 		add_result_list(start_list, start_result);
 		start_list = start_list->next;
